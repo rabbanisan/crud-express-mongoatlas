@@ -4,18 +4,26 @@ var Siswa = require('../model/siswa')
 const getSiswa = async (req, res) => {
     try {
         const dataSiswa = await Siswa.find();
-        res.json(dataSiswa);
+        res.render('index',{data:dataSiswa})
     } catch (error){
         res.status(500).json({message: error.message});
     }    
 }
+
+const formSiswa = async(req,res) =>  {
+    res.render('submit-siswa')
+   
+}
 //function insert siswa
 const saveSiswa = async (req, res) => {
-    const siswa = new Siswa(req.body);
-    console.log(siswa);
+
     try {
-        const savedSiswa = await siswa.save();
-        res.status(201).json(savedSiswa);
+        const newSiswa = new Siswa({
+            nama : req.body.nama,
+            kelas : req.body.kelas
+          });
+        await newSiswa.save();
+        res.redirect('/')         
     } catch (error) {
         res.status(400).json({message: error.message});
     }
@@ -23,5 +31,6 @@ const saveSiswa = async (req, res) => {
 
 module.exports={
     getSiswa,
-    saveSiswa
+    saveSiswa,
+    formSiswa
 }

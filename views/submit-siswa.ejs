@@ -8,15 +8,15 @@
 
 <body>
     <div class="flex justify-center mt-10 ">
-        <form action="/post-siswa" class="bg-sky-300 p-20 text-gray-700 rounded-lg">
+        <form action="/submit-siswa" class="bg-sky-300 p-20 text-gray-700 rounded-lg" method="POST">
             <table>
                 <tr>
-                    <td><label for="siswa">Nama: </label></td>
-                    <td><input type="text" name="nama" required></td>
+                    <td><label for="nama">Nama: </label></td>
+                    <td><input type="text" name="nama" id="nama" required></td>
                 </tr>
                 <tr>
                     <td><label for="kelas">Kelas: </label></td>
-                    <td><input type="text" name="kelas" required></td>
+                    <td><input type="text" name="kelas" id="nama" required></td>
                 </tr>
                 <tr>
                     <td><input type="submit" value="kirim" class="p-2 bg-red-300"></td>

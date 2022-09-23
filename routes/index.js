@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var {getSiswa,saveSiswa} = require('../controllers/siswaController');
+var {getSiswa,saveSiswa,formSiswa} = require('../controllers/siswaController');
 
 router.get('/', getSiswa);
-router.post('/', saveSiswa);
+router.get('/submit-siswa',formSiswa)
+router.post('/submit-siswa', saveSiswa);
 
 module.exports = router;
