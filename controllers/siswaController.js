@@ -1,5 +1,6 @@
 var Siswa = require('../model/siswa')
 
+
 // function Get Siswa
 const getSiswa = async (req, res) => {
     try {
@@ -28,9 +29,54 @@ const saveSiswa = async (req, res) => {
         res.status(400).json({message: error.message});
     }
 }
+// tampilkan satu siswa
+const getsatuSiswa = async (req, res) => {
+    try {
+        const id = req.params.id;
+        console.log(id);
+        const satuSiswa = await Siswa.findById(id).exec();
+        res.render('edit-siswa',{data:satuSiswa});
+    } catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+//update satu siswa
+const updatesatuSiswa = async (req, res) => {
+    try {
+        const id = req.params.id;
+        const data = req.body;
+        let siswa = await Siswa.findByIdAndUpdate(id, {
+            nama: data.nama,
+            kelas: data.kelas,
+        }, {new: true});
+        if(!siswa) return res.status(404).send('Siswa Tidak di temukan');
+        res.redirect('/');
+    }
+    catch (error) {
+        res.status(400).send(error.message);
+    }
+}
+
+const deleteSiswa = async (req, res) => {
+    try {
+        const id = req.params.id;
+        console.log(id);
+        const siswa = await Siswa.findByIdAndDelete(id);
+        if (!siswa) return res.status(404).send('siswa tidak di temukan');
+        res.redirect('/');
+    }
+    catch (error){
+        res.status(400).send(error.message);
+    }
+}
+
+
 
 module.exports={
     getSiswa,
     saveSiswa,
-    formSiswa
+    formSiswa,
+    getsatuSiswa,
+    updatesatuSiswa,
+    deleteSiswa
 }

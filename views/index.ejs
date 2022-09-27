@@ -6,27 +6,36 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-  <div class="flex justify-center mt-10">
-      <table class="table-fixed border border-slate-400 w-1/2 text-center">
-        <tr class="bg-sky-300">
-          <td class="border border-slate-300">NAMA</td>
-          <td class="border border-slate-300">KELAS</td>
-        </tr>
-        <% if(data !='' ) { %>
-          <% data.forEach((datas)=> { %>
-            <tr>
-              <td class="border border-slate-300">
-                <%- datas.nama %>
-              </td>
-              <td class="border border-slate-300">
-                <%- datas.kelas %>
-              </td>
-            </tr>
-            <% }) %>
-        <% } %>
-      </table>
+<body class="bg-gray-700">
+
+  <div class="grid justify-center">
+    <div class="mt-10">
+      <a href="/submit-siswa" class="p-2 rounded-md bg-green-500">Tambah Siswa</a>
     </div>
+    <table class=" border border-slate-400 w-[50vh] text-center text-white">
+      <tr class="bg-sky-300">
+        <td class="border border-slate-300">NAMA</td>
+        <td class="border border-slate-300">KELAS</td>
+        <td class="border border-slate-300">OPTION</td>
+      </tr>
+      <% if(data !='' ) { %>
+        <% data.forEach((datas)=> { %>
+          <tr>
+            <td class="border border-slate-300">
+              <%- datas.nama %>
+            </td>
+            <td class="border border-slate-300">
+              <%- datas.kelas %>
+            </td>
+            <td class="border border-slate-300 text-white">
+              <a href="/update-siswa/<%= datas._id %>" class="bg-yellow-500  px-5 rounded-md">edit</a>
+              <a href="/delete-siswa/<%= datas._id %>" class="bg-red-500 px-5 rounded-md">delete</a>
+            </td>
+          </tr>
+          <% }) %>
+            <% } %>
+    </table>
+  </div>
 </body>
 
 </html>
