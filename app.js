@@ -13,7 +13,7 @@ var app = express();
 main().catch(err => console.log(err));
 
 async function main() {
-  await mongoose.connect('mongodb+srv://omega:kX2uqLdFBzSHLc0q@cluster0.sjs8lq9.mongodb.net/?retryWrites=true&w=majority',()=>{console.log('database conected')});
+  await mongoose.connect('mongodb+srv://omega:XuVRM1Oz3oImInLR@cluster0.sjs8lq9.mongodb.net/sekolah?retryWrites=true&w=majority', () => { console.log('database conected') });
 }
 // koneksi mongodb end
 
@@ -22,8 +22,12 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 app.use(logger('dev'));
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

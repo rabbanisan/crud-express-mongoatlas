@@ -13,11 +13,9 @@ const getSiswa = async (req, res) => {
 
 const formSiswa = async(req,res) =>  {
     res.render('submit-siswa')
-   
 }
 //function insert siswa
 const saveSiswa = async (req, res) => {
-
     try {
         const newSiswa = new Siswa({
             nama : req.body.nama,
@@ -56,11 +54,11 @@ const updatesatuSiswa = async (req, res) => {
         res.status(400).send(error.message);
     }
 }
-
+// delete satu siswa
 const deleteSiswa = async (req, res) => {
     try {
         const id = req.params.id;
-        console.log(id);
+        //console.log(id);
         const siswa = await Siswa.findByIdAndDelete(id);
         if (!siswa) return res.status(404).send('siswa tidak di temukan');
         res.redirect('/');

@@ -7,6 +7,8 @@ const Siswa = new mongoose.Schema({
     kelas:{
       type: String
   }
+  },{
+  collection:"murid"
   });
 
 module.exports = mongoose.model('siswa',Siswa)
