@@ -1,14 +1,20 @@
-var mongoose = require('mongoose')
+var mongoose = require("mongoose");
 
-const Siswa = new mongoose.Schema({
-    nama:{
-      type: String
-    },
-    kelas:{
-      type: String
-  }
-  },{
-  collection:"murid"
-  });
+const Siswa = new mongoose.Schema(
+	{
+		nama: {
+			type: String,
+		},
+		jurusan: {
+			type: String,
+		},
+		kelas: {
+			type: String,
+		},
+	},
+	{
+		collection: "siswa",
+	}
+);
 
-module.exports = mongoose.model('siswa',Siswa)
+module.exports = mongoose.model("siswa", Siswa);
