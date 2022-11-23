@@ -31,7 +31,7 @@ const getsatuSiswa = async (req, res) => {
 		const id = req.params.id;
 		console.log(id);
 		const satuSiswa = await Siswa.findById(id).exec();
-		res.render("edit-siswa", { data: satuSiswa });
+		res.json(satuSiswa);
 	} catch (error) {
 		res.status(400).send(error.message);
 	}
